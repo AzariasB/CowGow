@@ -40,11 +40,11 @@ $css = Myglobals_model::$css;
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="change_groupe_chevron('logement', ['transport', 'activite']);">
                                     Logement
-                                    <span class="glyphicon glyphicon-chevron-up pull-right" id="logement" ></span>    
+                                    <span class="glyphicon glyphicon-chevron-down pull-right" id="logement" ></span>    
                                 </a>
                             </h4>    
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
                                 <li>
                                     <a href="#" data-target="#t_logement" data-toggle="modal">
@@ -110,6 +110,9 @@ $css = Myglobals_model::$css;
                 </div>
                 <hr>
                 <li>
+                    <a href="<?php echo site_url('Static_pages/accueil'); ?>">Accueil</a>
+                </li>
+                <li>
                     <a href="#">Contact</a>
                 </li>
                 <li>
@@ -126,7 +129,7 @@ $css = Myglobals_model::$css;
                 <div class="row" id="bouton" style="padding-top: 10px;">
                     <div class="col-sm-1">
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-                            <span class="btn-default glyphicon icon-menu"></span> 
+                            <span class="glyphicon icon-menu"></span> 
                         </a>
                     </div>
                 </div>

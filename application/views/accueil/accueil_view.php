@@ -8,7 +8,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
 <style>
     .parralax{
         background: url(<?php echo $pictures; ?>background.jpg) 10% 10% fixed no-repeat;
-        background-size: 120% auto;
+        background-size: cover;
     }
 </style>
 </head>
@@ -16,16 +16,16 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
     <?php
     $this->load->view('required/navbar', array('pictures' => $pictures));
     ?>
-    <div class="container">
-        <div class="row parralax" data-speed="4">
+    <div class="container parralax">
+        <div class="row title-text">
             <div class ="col-md-8 col-md-offset-2 text-center block">
                 <h1>Bienvenue sur CowGow</h1>
-                <h1><small>Le site de vente de voyage en ligne</small></h1>
+                <h3>Le site de vente de voyage en ligne</h3>
             </div>
 
         </div>
         <!-- Div pour les slides -->
-        <div class="row" style="background: azure">
+        <div class="row">
             <div class="col-md-12">
                 <div id="Carousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -67,7 +67,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
                 </div>
             </div>
         </div>
-        <div class="row block parralax">
+        <div class="row block title-text">
             <?php
             if ($connected) {
                 echo '            <div class=" spacer-md col-md-8 col-md-offset-2">
@@ -87,7 +87,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
             </div>';
             } else {
                 echo '            <div class=" spacer-md col-md-8 col-md-offset-2">
-                <a class="btn btn-primary btn-block btn-lg" href="'.  site_url('Register').'">
+                <a class="btn btn-primary btn-block btn-lg" href="' . site_url('Register') . '">
                     <h2> Inscrivez vous </h2>
                 </a>
             </div>
@@ -97,28 +97,27 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
                 </button>
             </div>
             <div class="spacer-md col-md-8 col-md-offset-2">
-                <h2 class="text-center">
-                    <small>Vous ne pouvez créer un pack que si vous êts connecté</small> 
-                </h2>
+                <h3 class="text-center">
+                    Vous ne pouvez créer un pack que si vous êts connecté
+                </h3>
             </div>';
             }
             ?>
 
+
+
         </div>
         <!-- premier univers -->
-        <div class="row text-center" style="background: url(<?php echo $pictures; ?>univers1.jpg) no-repeat fixed; background-size: auto 100%">
+        <div class="row text-center" style="background: url(<?php echo $pictures; ?>univers1.jpg) no-repeat fixed; background-size: auto 110%">
             <div class="col-md-12 block">
-                <h1 style="color: black">L'aventure vous attend</h1>
+                <h1 style="color: white">L'aventure vous attend</h1>
             </div>
         </div>
         <!-- Les trois 'boutons'-->
-
-        <?php
-        if ($connected) {
-            echo '        <div class="row text-center block parralax">
+        <div class="row text-center block title-text">
             <div class="col-md-2">
                 <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="button" aria-pressed="false" autocomplete="off">
-                    <h3>Selectionnez <br/> vos <br/> Activite </h3>
+                    <h3>Sélectionnez <br/> vos <br/> Activités </h3>
                 </button>
             </div>
             <div class="col-md-1 vertical_align">
@@ -126,7 +125,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-primary btn-block btn-lg " data-toggle="button" aria-pressed="false" autocomplete="off">
-                    <h3>Selectionnez <br/> votre <br/> Logement </h3>
+                    <h3>Sélectionnez <br/> votre <br/> Logement </h3>
                 </button>
             </div>
             <div class="col-md-1 vertical_align">
@@ -134,7 +133,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="button" aria-pressed="false" autocomplete="off">
-                    <h3>Selectionnez <br/> votre <br/> Transport </h3>
+                    <h3>Sélectionnez <br/> votre <br/> Transport </h3>
                 </button>
             </div>
             <div class="col-md-1 vertical_align">
@@ -144,50 +143,15 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
                 <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="button" aria-pressed="false" autocomplete="off">
                     <h3>Créez <br/> votre <br/> Pack personalisé </h3>
                 </button>
-            </div>
-        </div> ';
-        } else {
-            echo '        <div class="row text-center block parralax">
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block btn-lg disabled" data-toggle="button" aria-pressed="false" autocomplete="off">
-                    <h3>Selectionnez <br/> vos <br/> Activite </h3>
-                </button>
-            </div>
-            <div class="col-md-1 vertical_align">
-                <h2><span class="glyphicon glyphicon-plus"></span> </h2>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block btn-lg disabled" data-toggle="button" aria-pressed="false" autocomplete="off">
-                    <h3>Selectionnez <br/> votre <br/> Logement </h3>
-                </button>
-            </div>
-            <div class="col-md-1 vertical_align">
-                <h2><i class="glyphicon glyphicon-plus"></i> </h2>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block btn-lg disabled" data-toggle="button" aria-pressed="false" autocomplete="off">
-                    <h3>Selectionnez <br/> votre <br/> Transport </h3>
-                </button>
-            </div>
-            <div class="col-md-1 vertical_align">
-                <h2><span class="icon-eq"></span> </h2>
-            </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-primary btn-block btn-lg disabled" data-toggle="button" aria-pressed="false" autocomplete="off">
-                    <h3>Créez <br/> votre <br/> Pack personalisé </h3>
-                </button>
-            </div>
-        </div> ';
-        }
-        ?>
-
-        <!-- second univers -->
-        <div class="row text-center" style="background: url(<?php echo $pictures; ?>univers2.jpg) fixed no-repeat;background-size: auto 120%">
-            <div class="col-md-12 block">
-                <h1 style="color: white">La montagne est là pour vous</h1>
             </div>
         </div>
-        <div class="row block parralax">
+
+        <!-- second univers -->
+        <div class="row block text-center" style="background: url(<?php echo $pictures; ?>univers3.jpeg) fixed no-repeat;background-size: auto 150%;">
+            <h1>Faites le plein d'activités</h1>
+        </div>
+
+        <div class="row block title-text">
             <div class="col-md-8 col-md-offset-3">
                 <h2>
                     <span class="glyphicon glyphicon-heart"></span>
@@ -197,7 +161,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
             <div class="col-md-8 col-md-offset-3">
                 <h2>
                     <span class="glyphicon glyphicon-camera"></span>
-                    Partagez vos meilleurs experiences
+                    Partagez vos meilleurs expériences
                 </h2>
             </div>
             <div class="col-md-8 col-md-offset-3">
@@ -212,7 +176,10 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
                     Paramétrez vos recherche
                 </h2>
             </div>
+        </div>       
+        <div class="row text-center" style="background: url(<?php echo $pictures; ?>univers2.jpg) fixed no-repeat;background-size: auto 100%">
+            <div class="col-md-12 block">
+                <h1 style="color: white">La montagne est là pour vous</h1>
+            </div>
         </div>
-        <div class="row block text-center" style="background: url(<?php echo $pictures; ?>univers3.jpeg) fixed no-repeat;background-size: auto 140%;">
-            <h1>Faites le plein d'activités</h1>
-        </div>
+    </div>

@@ -13,7 +13,8 @@ $pictures = Myglobals_model::$pictures;
 <div class="scoped-content">
     <style>
         body{
-            background: url(<?php echo $pictures . 'accueil2.png'; ?>) fixed 100% 100%;
+            background: url(<?php echo $pictures . 'accueil2.png'; ?>) fixed no-repeat;
+            background-size: cover;
         }
     </style>
 </div>

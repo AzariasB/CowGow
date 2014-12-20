@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
     public function index() {
         
 
-        redirect('accueil');
+        redirect('Static_pages/accueil');
     }
 
 }
