@@ -1,0 +1,22 @@
+Agriculturemarine, pêche
+Bâtiment, travaux publis
+Électricité, électronique
+Mécanique, travail des métaux
+Industries de process
+Matériaux souples, bois, industries graphiques
+Maintenance
+Ingénieurs et cadres de l\'industrie
+Transports, logistique et tourisme
+Artisanat
+Gestion, administration des entreprises
+Informatique et télécommunications
+Études et recherche
+Administration publique, professions juridiques, armée et police
+Banque et assurances
+Commerce
+Hôtellerie, restauration, alimentation
+Services aux particuliers et aux collectivités
+Communication, information, art et spectacle
+Santé, action sociale, culturelle et sportive
+Enseignement, formation
+Politique, religion

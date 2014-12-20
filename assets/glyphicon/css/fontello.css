@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?24601706');
+  src: url('../font/fontello.eot?24601706#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff?24601706') format('woff'),
+       url('../font/fontello.ttf?24601706') format('truetype'),
+       url('../font/fontello.svg?24601706#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?24601706#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-eq-outline:before { content: '\e800'; } /* '' */
+.icon-eq:before { content: '\e801'; } /* '' */
+.icon-belowground-rail:before { content: '\e802'; } /* '' */
+.icon-bicycle:before { content: '\e803'; } /* '' */
+.icon-bus:before { content: '\e804'; } /* '' */
+.icon-home:before { content: '\e805'; } /* '' */
+.icon-location:before { content: '\e806'; } /* '' */
+.icon-home-outline:before { content: '\e807'; } /* '' */
+.icon-bank:before { content: '\e808'; } /* '' */
+.icon-building:before { content: '\e809'; } /* '' */
+.icon-cab:before { content: '\e80a'; } /* '' */
+.icon-bus-1:before { content: '\e80b'; } /* '' */
+.icon-skiing:before { content: '\e80c'; } /* '' */
+.icon-pitch:before { content: '\e80d'; } /* '' */
+.icon-golf:before { content: '\e80e'; } /* '' */
+.icon-campsite:before { content: '\e80f'; } /* '' */
+.icon-lodging:before { content: '\e810'; } /* '' */
+.icon-library:before { content: '\e811'; } /* '' */
+.icon-menu:before { content: '\e812'; } /* '' */
+.icon-facebook-circled:before { content: '\e813'; } /* '' */
+.icon-gplus-circled:before { content: '\e814'; } /* '' */
+.icon-linkedin:before { content: '\e815'; } /* '' */
+.icon-instagram:before { content: '\e816'; } /* '' */
+.icon-twitter-circled:before { content: '\e817'; } /* '' */
+.icon-spin1:before { content: '\e818'; } /* '' */
+.icon-sun:before { content: '\e819'; } /* '' */
+.icon-spin3:before { content: '\e81a'; } /* '' */
+.icon-spin4:before { content: '\e81b'; } /* '' */
+.icon-spin5:before { content: '\e81c'; } /* '' */
+.icon-spin6:before { content: '\e81d'; } /* '' */
+.icon-note-beamed:before { content: '\e81e'; } /* '' */
+.icon-snow:before { content: '\e81f'; } /* '' */

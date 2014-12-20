@@ -1,0 +1,22 @@
+Ski De piste|Hiver
+Ski De fond|Hiver
+Ski Alpin|Hiver
+Ski Nordique|Hiver
+Raquettes|Hiver
+Luge |Hiver
+Hockey sur glace|Hiver
+Patin à glace|Hiver
+Motoneige |Hiver
+Traîneaux à chiens|Hiver
+Héliski |Hiver
+Alpinisme |Hiver
+Escalade sur glace|Hiver
+Randonnée|Eté
+Pedestre|Eté
+VTT|Eté
+Equitation|Eté
+Parapente|Eté
+Escalade|Eté
+Rafting, kayak|Eté
+Pêche|Eté
+Via Ferrata|Eté
