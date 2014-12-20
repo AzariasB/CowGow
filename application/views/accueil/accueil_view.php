@@ -19,8 +19,8 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
     <div class="container">
         <div class="row parralax" data-speed="4">
             <div class ="col-md-8 col-md-offset-2 text-center block">
-                <h1>Bienvenue sur CowGow.fr</h1>
-                <h1><small>LE site de vente de voyage en ligne</small></h1>
+                <h1>Bienvenue sur CowGow</h1>
+                <h1><small>Le site de vente de voyage en ligne</small></h1>
             </div>
 
         </div>
