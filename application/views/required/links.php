@@ -8,7 +8,7 @@
         $javascript = Myglobals_model::$javascript;
         ?>
         <meta charset="utf-8">
-        <title>Cow Gow.fr</title>
+        <title>Cow Gow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="icon" type="image/png" href="<?php echo $pictures ?>logo.png "/>
 

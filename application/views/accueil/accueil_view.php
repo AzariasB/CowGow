@@ -7,7 +7,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
 <link href="<?php echo $css ?>mycss.css" rel="stylesheet" />
 <style>
     .parralax{
-        background: url(<?php echo $pictures; ?>background.jpg) 10% 10% fixed no-repeat;
+        background: url(<?php echo $pictures; ?>background.jpg) fixed no-repeat;
         background-size: cover;
     }
 </style>
@@ -20,7 +20,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
         <div class="row title-text">
             <div class ="col-md-8 col-md-offset-2 text-center block">
                 <h1>Bienvenue sur CowGow</h1>
-                <h3>Le site de vente de voyage en ligne</h3>
+                <h3>Le site de ventes de voyages en ligne</h3>
             </div>
 
         </div>
@@ -108,7 +108,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
 
         </div>
         <!-- premier univers -->
-        <div class="row text-center" style="background: url(<?php echo $pictures; ?>univers1.jpg) no-repeat fixed; background-size: auto 110%">
+        <div class="row text-center" style="background: url(<?php echo $pictures; ?>univers1.jpg) no-repeat fixed; background-size: cover;">
             <div class="col-md-12 block">
                 <h1 style="color: white">L'aventure vous attend</h1>
             </div>
@@ -147,7 +147,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
         </div>
 
         <!-- second univers -->
-        <div class="row block text-center" style="background: url(<?php echo $pictures; ?>univers3.jpeg) fixed no-repeat;background-size: auto 150%;">
+        <div class="row block text-center" style="background: url(<?php echo $pictures; ?>univers3.jpeg) fixed no-repeat;background-size: cover;">
             <h1>Faites le plein d'activités</h1>
         </div>
 
@@ -177,7 +177,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
                 </h2>
             </div>
         </div>       
-        <div class="row text-center" style="background: url(<?php echo $pictures; ?>univers2.jpg) fixed no-repeat;background-size: auto 100%">
+        <div class="row text-center" style="background: url(<?php echo $pictures; ?>univers2.jpg) fixed no-repeat;background-size: cover;">
             <div class="col-md-12 block">
                 <h1 style="color: white">La montagne est là pour vous</h1>
             </div>

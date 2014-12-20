@@ -5,11 +5,11 @@ $session = $this->session->userdata('logged_in');
 $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
 ?>
 <!-- Navbar -->
-<nav class="navbar navbar-default navbar-fixed-top navbar-collapse" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

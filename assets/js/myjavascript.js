@@ -129,6 +129,16 @@ function mdp_check(input_id, span_id, p_id) {
 ///////////////////////////////////////////////////////////
 //Fonction réutilisable
 ///////////////////////////////////////////////////////////
+//Pour attendre un peu avant d'activer la fonction
+function wait(time) {
+    var date = new Date();
+    var curDate = null;
+
+    do {
+        curDate = new Date();
+    } while (curDate - date < time);
+}
+
 
 //Change un et UN SEUL chevron
 function chevron_change(id) {
@@ -156,8 +166,7 @@ function chevron_change(id) {
         alert('Problème : mauvais chevron :' + res);
     }
 
-    //alert(document.getElementById(id).className);
-
+    //Pour éviter de pouvoir spammer le chevron ...
 }
 
 //Change la classe du chevron en 'up'
@@ -186,8 +195,7 @@ function change_groupe_chevron(my_id, others_id) {
     }
 }
 
-function change_link(id,first_link) {
+function hide_link(id, first_link) {
     document.getElementById(id).style.display = "none";
     document.getElementById(first_link).style.display = 'block';
-
 }

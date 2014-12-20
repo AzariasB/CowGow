@@ -36,7 +36,7 @@ $css = Myglobals_model::$css;
                     <label for="plus">Plus...</label>
                 </fieldset>
                 
-                <label for="creneau">Crenau horaire : </label>
+                <label for="creneau">Créneau horaire : </label>
                 <fieldset id="creneau" class="form-control">
                     <input type="checkbox" name="matin" id="matin" value="creneau"/>
                     <label for="matin">Matin </label>
