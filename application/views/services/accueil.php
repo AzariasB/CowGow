@@ -8,8 +8,6 @@ and open the template in the editor.
 $css = Myglobals_model::$css;
 $pictures = Myglobals_model::$pictures;
 ?>
-
-<link href="<?php echo $css; ?>services.css" rel="stylesheet" />
 <div class="scoped-content">
     <style>
         body{
@@ -18,17 +16,14 @@ $pictures = Myglobals_model::$pictures;
         }
     </style>
 </div>
-<script>
 
-</script>
-
-<div class="container-smooth">
+<div class="container-smooth" id="main-container">
     <div class="row">
 
         <!-- Debut logement -->
-        <div class="col-md-offset-2 col-md-2 text-center service text-info" onmouseenter="hide_link('logement-div', 'logement_suite');" onmouseleave="hide_link('logement_suite', 'logement-div');">
-            <div id="logement-div" >
-                <div class="row">
+        <div class="col-md-offset-2 col-md-2 text-center service" onmouseenter="hide_link('logement-div', 'logement_suite');" onmouseleave="hide_link('logement_suite', 'logement-div');">
+            <a href="#">
+                <div class="row" id="logement-div">
                     <div class="col-md-6">
                         <h1><span class="glyphicon icon-home"></span></h1>
                     </div>
@@ -43,110 +38,116 @@ $pictures = Myglobals_model::$pictures;
                         <h1><span class="glyphicon icon-building"></span></h1>
                     </div>
                 </div>
-                <div class="row">
-                    <h2>Logement</h2>
+                <div style="display: none;" id="logement_suite" class="row">
+                    <a href="#" data-target="#t_logement" data-toggle="modal" class="row modal_link" >
+                        <div class="col-md-12">
+                            <h3><span class="glyphicon icon-campsite"></span>Type</h3>
+                        </div>
+                    </a>
+                    <br>
+                    <a href="#" data-target="#l_logement" data-toggle="modal" class="row modal_link">
+                        <div class="col-md-12">
+                            <h3><span class="glyphicon glyphicon-flag"></span>  Lieu</h3>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div style="display: none;" id="logement_suite">
-                <a href="#" data-target="#t_logement" data-toggle="modal" class="row modal_link">
-                    <div class="col-md-12">
-                        <h3><span class="glyphicon icon-campsite"></span>  Type</h3>
-                    </div>
-                </a>
-                <a href="#" data-target="#l_logement" data-toggle="modal" class="row modal_link">
-                    <div class="col-md-12">
-                        <h3><span class="glyphicon glyphicon-flag"></span>  Lieu</h3>
-                    </div>
-                </a>
-            </div>
+                <div class="row">
+                    <h2>
+                        <a href="#">
+                            Logement
+                        </a>
+                    </h2>
+                </div>
+            </a>
         </div>
 
         <!-- fin logement -->
 
         <!-- Debut activite -->
         <div class="col-md-offset-1 col-md-2 text-center service" onmouseenter="hide_link('activite-div', 'activite_suite');" onmouseleave="hide_link('activite_suite', 'activite-div');">
-            <div id="activite-div"  >
-                <a href="#">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1><span class="glyphicon icon-golf"></span></h1>
-                        </div>
-                        <div class="col-md-6">
-                            <h1><span class="glyphicon icon-skiing"></span></h1>
-                        </div>
-                        <br>
-                        <div class="col-md-6">
-                            <h1><span class="glyphicon icon-pitch"></span></h1>
-                        </div>
-                        <div class="col-md-6">
-                            <h1><span class="icon-bicycle"></span></h1>
-                        </div>
+            <a href="#">
+                <div class="row" id="activite-div">
+                    <div class="col-md-6">
+                        <h1><span class="glyphicon icon-golf"></span></h1>
                     </div>
-                    <div class="row">
-                        <h2>Activite</h2>
+                    <div class="col-md-6">
+                        <h1><span class="glyphicon icon-skiing"></span></h1>
                     </div>
-                </a>
-            </div>
-            <div style="display: none;" id="activite_suite">
-                <a href="#" data-target="#s_activite" data-toggle="modal" class="row modal_link">
-                    <div class="col-md-12">
-                        <h3><span class="glyphicon icon-sun"></span>  Saison</h3>
+                    <br>
+                    <div class="col-md-6">
+                        <h1><span class="glyphicon icon-pitch"></span></h1>
                     </div>
-                </a>
-                <a href="#" data-target="#l_activite" data-toggle="modal" class="row modal_link">
-                    <div class="col-md-12">
-                        <h3><span class="glyphicon glyphicon-flag"></span>  Lieu</h3>
+                    <div class="col-md-6">
+                        <h1><span class="icon-bicycle"></span></h1>
                     </div>
-                </a>
-            </div>
+                </div>
+                <div style="display: none;" id="activite_suite" class="row">
+                    <a href="#" data-target="#s_activite" data-toggle="modal" class="row modal_link">
+                        <div class="col-md-12">
+                            <h3><span class="glyphicon icon-sun"></span>  Saison</h3>
+                        </div>
+                    </a>
+                    <br>
+                    <a href="#" data-target="#l_activite" data-toggle="modal" class="row modal_link">
+                        <div class="col-md-12">
+                            <h3><span class="glyphicon glyphicon-flag"></span>  Lieu</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="row">
+                    <h2>
+                        <a href="#">
+                            Activite
+                        </a>
+                    </h2>
+                </div>
+            </a>
         </div>
-
         <!-- fin activite -->
 
         <!-- Debut transport -->
-        <div class="col-md-offset-1 col-md-2 text-center service" onmouseenter="hide_link('transport-div', 'transport_suite');" onmouseleave="hide_link('transport_suite','transport-div');">
-            <div  id="transport-div" >
-                <a href="#">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1><span class="glyphicon glyphicon-road"></span></h1>
-                        </div>
-                        <div class="col-md-6">
-                            <h1><span class="glyphicon glyphicon-plane"></span></h1>
-                        </div>
-                        <br>
-                        <div class="col-md-6">
-                            <h1><span class="glyphicon icon-bus"></span></h1>
-                        </div>
-                        <div class="col-md-6">
-                            <h1><span class="icon-cab"></span></h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h2>Transport</h2>
-                    </div>
-                </a>
+        <div class="col-md-offset-1 col-md-2 text-center service text-info" onmouseenter="hide_link('transport-div', 'transport_suite');" onmouseleave="hide_link('transport_suite','transport-div');">
+            <div class="row" id="transport-div">
+                <div class="col-md-6">
+                    <h1><span class="glyphicon glyphicon-road"></span></h1>
+                </div>
+                <div class="col-md-6">
+                    <h1><span class="glyphicon glyphicon-plane"></span></h1>
+                </div>
+                <br>
+                <div class="col-md-6">
+                    <h1><span class="glyphicon icon-bus"></span></h1>
+                </div>
+                <div class="col-md-6">
+                    <h1><span class="icon-cab"></span></h1>
+                </div>
             </div>
             <div style="display: none;" id="transport_suite" >
                 <a href="#" data-target="#d_transport" data-toggle="modal" class="row modal_link">
                     <div class="col-md-12">
-                        <h3>
-                            <span class="glyphicon glyphicon-flag"></span>Départ</h3>
+                        <h3><span class="glyphicon glyphicon-flag"></span>Départ</h3>
                     </div>
                 </a>
+                <br>
                 <a href="#" data-target="#a_transport" data-toggle="modal" class="row modal_link">
                     <div class="col-md-12">
-                        <h3>
-                            <span class="glyphicon glyphicon-flag"></span> Arrivé</h3>
+                        <h3><span class="glyphicon glyphicon-flag"></span> Arrivé</h3>
                     </div>
                 </a>
             </div>
+            <div class="row">
+                <h2>
+                    <a href="#">
+                        Transport
+                    </a>
+                </h2>
+            </div>
         </div>
+
+
         <!-- fin transport -->
     </div>
     <br>
-
-
     <div class="row">
 
         <!-- Debut 'mon compte' -->
@@ -224,7 +225,6 @@ $pictures = Myglobals_model::$pictures;
         </div>
         <!-- fin 'mes packs' -->
     </div>
-</div>
 </div>
 </body>
 </html>

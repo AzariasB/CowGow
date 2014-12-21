@@ -1,9 +1,9 @@
 <?php
-$css = Myglobals_model::$css;
+$session = $this->session->userdata('logged_in');
+$connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
 ?>
 
 <!-- Custom CSS -->
-<link href="<?php echo $css; ?>simple-sidebar.css" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,20 +20,21 @@ $css = Myglobals_model::$css;
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <br><br>
-                <hr>
                 <li>
+                  <hr>  
+                </li>
+                <?php
+                if ($connected) {
+                    echo '                <li>
                     <a href="#">Mon compte</a>
 
                 </li>
-                <li>
-                    <a href="#">Mes options</a>
-
-                </li>
-                <li>
-                    <a href="#">Mon panier</a>
-                </li>
-                <hr>
+                <li><a href="#">Mes options</a></li>
+                <li><a href="#">Mon panier</a></li><li><hr></li>';
+                }else{
+                    echo '<li><a href="'.  site_url('Register').'">S\'inscrire</a></li><li><hr></li>';
+                }
+                ?>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne">
@@ -108,15 +109,22 @@ $css = Myglobals_model::$css;
                         </div>
                     </div>
                 </div>
-                <hr>
+                <li>
+                  <hr>  
+                </li>
                 <li>
                     <a href="<?php echo site_url('Static_pages/accueil'); ?>">Accueil</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
                 </li>
+                <?php
+                if ($connected) {
+                    echo '<li><a href="' . site_url('User/logout') . '">Déconnexion</a><li>';
+                }
+                ?>
                 <li>
-                    <a href="#">Déconnexion</a>
+
                 </li>
             </ul>
         </div>

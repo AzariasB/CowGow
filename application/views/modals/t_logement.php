@@ -15,8 +15,8 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
-                        <label for="type">Type de logement : </label>
-                        <select  class="select form-control" id="type">
+                        <label for="type_l">Type de logement : </label>
+                        <select  class="select form-control" id="type_l">
                             <?php
                             foreach ($types as $value) {
                                 echo "<option class=\"form-control\">$value</option>".PHP_EOL;

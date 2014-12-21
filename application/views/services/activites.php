@@ -4,12 +4,6 @@ $slider = base_url() . 'assets/slider/';
 $css = Myglobals_model::$css;
 
 ?>
-
-<link href="<?php echo $slider; ?>slider.css" rel="stylesheet" />
-<link href="<?php echo $css; ?>services.css" rel="stylesheet" />
-<script src="<?php echo $slider; ?>bootstrap-slider.js" ></script>
-
-
 <div class="container">
     <div class="row text-center">
         <h1>Activités</h1>

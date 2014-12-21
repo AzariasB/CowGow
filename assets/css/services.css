@@ -8,25 +8,41 @@ and open the template in the editor.
     Author     : Azarias
 */
 
-.container-smooth{
-    padding : 40px;
+body{
+    width: 100%;
+}
+
+#main-container{
+    text-align: center;
+    vertical-align: central;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#main-container>div{
+    width: 100%;
 }
 
 .service{
+    vertical-align: middle;
     background-color: #080068;
     border: 1px solid #D9D9D9;
-    height: 210px;
 
     //Transitions
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s;
-    transition: height 0.5s;
-    -webkit-transition: height 0.5s;
+    transition: background 0.5s, height 0.5s;
+    -webkit-transition: background 0.5s, height 0.5s;
 }
 
 .service:hover{
     background-color: #FFA730;
-    height: 180px;
+}
+
+.service a{
+    margin : 0px;
+}
+
+.service div a h3{
+    padding: 1.5px;
 }
 
 .personel{
@@ -55,10 +71,14 @@ and open the template in the editor.
 }
 
 
-a:hover :visited :after{
-    text-decoration: none;
+//Pour enlever ttes les décos de base des liens
+a :hover :visited :after{
+    text-decoration: none !important;
 }
 
+h2>a:hover{
+    text-decoration: none;
+}
 
 .border_fieldset{
     border: 1px solid #D9D9D9;
@@ -116,4 +136,12 @@ a:hover :visited :after{
     color: #fff !important;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+}
+
+#sidebar-wrapper{
+    box-shadow: 8px 0px 32px #191919;
+}
+
+.sidebar-nav:first-child{
+    padding-top: 40px;
 }

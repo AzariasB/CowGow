@@ -25,13 +25,14 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
                 <?php
                 if ($connected) {
                     //A compléter pour avoir des liens fonctionnels
-                    echo '<li><a href="'.  site_url('Static_pages/services') ;
-                    echo '">Consulter les offres</a></li>';
-                    echo '<li><a href="#">Créer un pack</a></li>';
+                    echo '<li><a href="' . site_url('Static_pages/services').'">Consulter les offres</a></li>';
+                    echo '<li><a href="'.  site_url('Static_pages/creer_pack'). '">Créer un pack</a></li>';
                     echo '<li class="disabled"><a href="#" class="disabled">Mon panier</a></li>';
                 } else {
                     $register = site_url('Register');
                     echo "<li><a href=\"$register\">S'inscrire</a></li>";
+                    echo '<li><a href="' . site_url('Static_pages/services');
+                    echo '">Consulter les offres</a></li>';
                 }
                 ?>
             </ul>

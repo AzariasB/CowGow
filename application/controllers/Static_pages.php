@@ -37,13 +37,18 @@ class Static_pages extends CI_Controller {
 
     function services() {
         $this->load->view('required/links');
-        $this->navbar_collaps();
+        $this->navbar_collapse();
         $this->load->view('services/accueil');
     }
 
-    function navbar_collaps() {
+    function navbar_collapse() {
+        //Tous les fichiers requis pour le js et le css
+        $this->load->view('required/services_links');
+        
+        //La navbar en elle-même
         $this->load->view('required/navbar_collapse');
-        //$this->load->view('modals/activite_modal'); <- a changer
+        
+        //Tout les modaux qui vont avec
         $this->load->view('modals/t_logement');
         $this->load->view('modals/l_logement');
         $this->load->view('modals/l_activite');
@@ -72,6 +77,19 @@ class Static_pages extends CI_Controller {
         $this->load->view('required/links');
         $this->navbar_collaps();
         $this->load->view('services/logement');
+    }
+    
+    function creer_pack(){
+        /*
+         * Quand l'utilisateur va pour créer un pack, il faut 'prévenir' les autres pages
+         * Pour qu'on puisse ajouter un bouton 'ajouter au pack'
+         * Si l'utilisateur annule la création d'un pack, on efface cette variable
+         * 
+         */
+        
+        
+        $this->load->view('required/links');
+        $this->load->view('creerPack/creerPack');
     }
 
 }
