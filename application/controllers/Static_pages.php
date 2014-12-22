@@ -96,7 +96,7 @@ class Static_pages extends CI_Controller {
                 'transport' => 0,
                 'activite' => 0
             );
-        }else{
+        } else {
             $creation = $this->session->userdata('creer');
         }
 
@@ -112,12 +112,21 @@ class Static_pages extends CI_Controller {
         $this->navbar_collapse();
         $this->load->view('creerPack/creerPack');
     }
-    
-    function contact(){
-        $this->load->view('required/links');
-        $this->load->view('othercss');
-        $this->navbar_collapse();
-        $this->load->view('contact');
+
+    function contact() {
+        $success = $this->session->flashdata('contact');
+        if ($success == NULL) {
+            $this->load->view('required/links');
+            $this->load->view('othercss');
+            $this->navbar_collapse();
+            $this->load->view('contact');
+        }else if($success == FALSE){
+            //Une erreur s'est produite
+            
+            
+        }else{
+            
+        }
     }
 
 }

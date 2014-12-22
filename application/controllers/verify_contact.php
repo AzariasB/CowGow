@@ -53,16 +53,14 @@ class verify_contact extends CI_Controller {
     }
 
     function send_mail() {
-        $this->email->from($_POST['email'],$_POST['nom'] );
-        $this->email->to('support@cowgow.byethost.com');
-        $this->email->bcc('them@their-example.com');
+        $this->email->from('support@cowgow.byethost7.com',$_POST['nom'] );
+        $this->email->to('support@cowgow.byethost7.com');
 
         $this->email->subject($_POST['objet']);
         $this->email->message($_POST['message']);
 
-        $this->email->send();
-
-        echo $this->email->print_debugger();
+        
+        $this->session->set_flashdata('contact',  $this->email->send());
     }
 
 }

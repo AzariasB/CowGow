@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'sql107.byethost6.com';
-$db['default']['username'] = 'b6_15629487';
+$db['default']['hostname'] = 'sql303.byethost7.com';
+$db['default']['username'] = 'b7_15672023';
 $db['default']['password'] = 'ccoollavie';
-$db['default']['database'] = 'b6_15629487_depinfo';
+$db['default']['database'] = 'b7_15672023_depinfo';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

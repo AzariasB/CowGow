@@ -31,7 +31,7 @@ class verifylogin extends CI_Controller {
             $this->load->view('login/login_view');
         } else {
             //Go to main menu
-            redirect('user/login', 'refresh');
+            redirect('User/login', 'refresh');
         }
     }
 

@@ -145,3 +145,9 @@ h2>a:hover{
 .sidebar-nav:first-child{
     padding-top: 40px;
 }
+
+#sidebar-wrapper{
+    //Pour éviter l'apparition d'un scrollbar toute moche
+    overflow: hidden;
+    overflow-x: hidden;
+}
