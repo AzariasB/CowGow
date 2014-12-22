@@ -121,7 +121,7 @@ class verifyregister extends CI_Controller {
                 'field' => 'activites_favorites',
                 'label' => 'champs \'activites favorites\'',
                 'rules' => 'trim|xss_clean'
-            ),
+            )
         );
         $this->form_validation->set_rules($config);
 

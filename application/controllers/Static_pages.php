@@ -44,10 +44,10 @@ class Static_pages extends CI_Controller {
     function navbar_collapse() {
         //Tous les fichiers requis pour le js et le css
         $this->load->view('required/services_links');
-        
+
         //La navbar en elle-même
         $this->load->view('required/navbar_collapse');
-        
+
         //Tout les modaux qui vont avec
         $this->load->view('modals/t_logement');
         $this->load->view('modals/l_logement');
@@ -78,18 +78,46 @@ class Static_pages extends CI_Controller {
         $this->navbar_collaps();
         $this->load->view('services/logement');
     }
-    
-    function creer_pack(){
+
+    function creer_pack() {
         /*
          * Quand l'utilisateur va pour créer un pack, il faut 'prévenir' les autres pages
          * Pour qu'on puisse ajouter un bouton 'ajouter au pack'
          * Si l'utilisateur annule la création d'un pack, on efface cette variable
          * 
+         * 
+         * On créer une variable pour y stocker les infos du pack
+         * Si celle-ci n'a pas été créé
          */
-        
-        
+
+        if ($this->session->userdata('creer') == NULL) {
+            $creation = array(
+                'logement' => 0,
+                'transport' => 0,
+                'activite' => 0
+            );
+        }else{
+            $creation = $this->session->userdata('creer');
+        }
+
+        /*
+         * Pour chaque service, on stock l'id pour pouvoir ensuite réafficher correctement la page
+         * Tant que l'utilisateur est connecté on peut stocker dans un array (temp)
+         * Quand il se deconnecte, il faut le prévenir qu'il faut qu'il enregistre ce qu'il a fait s'il veut continuer la prochaine fois
+         */
+        $this->session->set_userdata('creer', $creation);
+
         $this->load->view('required/links');
+        $this->load->view('creerPack/style');
+        $this->navbar_collapse();
         $this->load->view('creerPack/creerPack');
+    }
+    
+    function contact(){
+        $this->load->view('required/links');
+        $this->load->view('othercss');
+        $this->navbar_collapse();
+        $this->load->view('contact');
     }
 
 }

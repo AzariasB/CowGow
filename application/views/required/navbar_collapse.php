@@ -116,7 +116,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
                     <a href="<?php echo site_url('Static_pages/accueil'); ?>">Accueil</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="<?php echo site_url('Static_pages/contact'); ?>">Contact</a>
                 </li>
                 <?php
                 if ($connected) {
