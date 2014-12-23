@@ -61,6 +61,8 @@ class verify_contact extends CI_Controller {
 
         
         $this->session->set_flashdata('contact',  $this->email->send());
+        
+        redirect('Static_pages/contact');
     }
 
 }

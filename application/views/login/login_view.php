@@ -13,7 +13,7 @@
                 <div class="panel panel-info" >
                     <div class="panel-heading">
                         <div class="panel-title">Se connecter</div>
-                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Mot de passe oublié?</a></div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="<?php echo site_url('User/forgot_passwd') ?>">Mot de passe oublié?</a></div>
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body" >

@@ -56,5 +56,9 @@ class User extends CI_Controller {
         //On indique que personne n'est connecté        
         redirect('static_pages/accueil', 'refresh');
     }
+    
+    function forgot_passwd(){
+        
+    }
 
 }

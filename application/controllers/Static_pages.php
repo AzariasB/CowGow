@@ -114,19 +114,11 @@ class Static_pages extends CI_Controller {
     }
 
     function contact() {
-        $success = $this->session->flashdata('contact');
-        if ($success == NULL) {
-            $this->load->view('required/links');
-            $this->load->view('othercss');
-            $this->navbar_collapse();
-            $this->load->view('contact');
-        }else if($success == FALSE){
-            //Une erreur s'est produite
-            
-            
-        }else{
-            
-        }
+;
+        $this->load->view('required/links');
+        $this->load->view('othercss');
+        $this->navbar_collapse();
+        $this->load->view('contact');
     }
 
 }

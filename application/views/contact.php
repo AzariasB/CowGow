@@ -11,7 +11,9 @@ $this->load->library('form_validation');
     </div>
     <br/>
     <?php
-    if (!isset($validate)) {
+    $validate = $this->session->flashdata('contact');
+    
+    if ($validate == NULL) {
         echo form_open('verify_contact');
         echo '<div class = "row">
     <div class = "col-md-2 text-right">
