@@ -120,5 +120,10 @@ class Static_pages extends CI_Controller {
         $this->navbar_collapse();
         $this->load->view('contact');
     }
+    
+    function retrouver_mdp(){
+        $this->load->view('required/links');
+        $this->load->view('login/forgot_password');
+    }
 
 }

@@ -58,7 +58,10 @@ class User extends CI_Controller {
     }
     
     function forgot_passwd(){
-        
+        //On lui demande son e-mail
+        echo '<pre>';
+        print_r($_POST);
+        die('</pre>');
     }
 
 }

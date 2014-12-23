@@ -308,7 +308,7 @@
                                             <select id="destinations" multiple="multiple" name="destinations[]">
                                                 <?php
                                                 $option = '';
-                                                foreach ($stations as $key => $value) {
+                                                foreach ($station as $key => $value) {
                                                     if ($option != $value) {
                                                         if ($option != '') {
                                                             echo '</optgroup>';

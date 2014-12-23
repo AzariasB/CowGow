@@ -24,7 +24,7 @@ class register_model extends CI_Model {
     public function get_data() {
         $data['emplois'] = $this->get_emplois();
         $data['activites'] = $this->get_activites();
-        $data['stations'] = $this->get_stations();
+        $data['station'] = $this->get_stations();
         return $data;
     }
 
@@ -36,14 +36,15 @@ class register_model extends CI_Model {
     }
 
     private function get_stations() {
-        $stations = $this->get_all('stations');
+        $stations = $this->get_all('station');
 
         $nom_station = array();
         foreach ($stations as $key => $value) {
-            $nom_station[$value->nomS] = $value->massif; //une erreur là
+            $nom_station[$value->nom_station] = $value->massif;
         }
 
         array_multisort(array_values($nom_station), SORT_REGULAR, array_keys($nom_station), SORT_REGULAR);
+        
         return $nom_station;
     }
 
@@ -52,18 +53,18 @@ class register_model extends CI_Model {
 
         $nom_emploi = array();
         foreach ($emploi as $key => $value) {
-            $nom_emploi[$key] = $value->nomE; //une erreure ici
+            $nom_emploi[$key] = $value->nom_emploi; //une erreure ici
         }
         asort($nom_emploi);
         return $nom_emploi;
     }
 
     private function get_activites() {
-        $activites = $this->get_all('activite');
+        $activites = $this->get_all('activite_favorite');
 
         $nom_acts = array();
         foreach ($activites as $key => $value) {
-            $nom_acts[$value->nom_activite] = $value->saison;
+            $nom_acts[$value->nom_act] = $value->saison;
         }
 
         asort($nom_acts);

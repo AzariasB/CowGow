@@ -22,7 +22,6 @@ class Register extends CI_Controller {
     }
 
     function index() {
-
         $this->load->view('required/links');
         $this->load->view('register/register_view', $this->register_model->get_data());
     }

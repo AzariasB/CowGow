@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--A compléter :
     - Le lien pour pouvoir s'enregistrer
     - Le gestionnaire en cas d'oubli du mot de passe
@@ -13,7 +14,7 @@
                 <div class="panel panel-info" >
                     <div class="panel-heading">
                         <div class="panel-title">Se connecter</div>
-                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="<?php echo site_url('User/forgot_passwd') ?>">Mot de passe oublié?</a></div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="<?php echo site_url('Static_pages/retrouver_mdp') ?>">Mot de passe oublié?</a></div>
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body" >
@@ -25,12 +26,12 @@
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="username" type="text" class="form-control" name="pseudo" value="" placeholder="pseudo">                                        
+                            <input id="username" type="text" class="form-control" name="pseudo" value="" placeholder="pseudo" required="">                                        
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="password" type="password" class="form-control" name="passwd" placeholder="mot de passe">
+                            <input id="password" type="password" class="form-control" name="passwd" placeholder="mot de passe" required="">
                         </div>
 
                         <div style="margin-top:10px" class="form-group">
@@ -47,7 +48,7 @@
                             <div class="col-md-12 control">
                                 <div style="padding-top:15px; font-size:85%" >
                                     Pas encore inscrit? 
-                                    <a href="#">Inscrivez vous ici!</a>
+                                    <a href="<?php echo site_url('Register'); ?>">Inscrivez vous ici!</a>
                                 </div>
                             </div>
                         </div>    
