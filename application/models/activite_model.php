@@ -79,7 +79,26 @@ class Activite_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Activite');
         
-        return $this->db->get()->result();
+        $id =  $this->db->get()->result();       
+        
+        $this->db->select("*");
+        $this->db->from("Service");
+        foreach ($id as $key => $value){
+            $this->db->or_where('IDService',$value->ida);
+            //Transformation en array pour plus de facilité de manipulation
+            $id[$key] = (array)$value;
+        }
+        
+        $result =  $this->db->get()->result();
+        
+        foreach ($id as $key => $value){
+            //Transformation de chaque ligne en array
+            $result[$key] = (array)$result[$key];
+            unset($result[$key]['IDService']);
+            $result[$key] = array_merge($id[$key],$result[$key]);
+        }
+        
+        return $result;
     }
 
 }

@@ -19,12 +19,16 @@ class verify_filter extends CI_Controller {
     }
 
     function activite() {
+        //Pour pouvoir récupérer les activites de la BDD.
+        $this->load->model('activite_model');
+
         $echelleprix = $this->separate_coma($_POST['prix_act']);
         unset($_POST['filter']);
         unset($_POST['prix_act']);
 
         echo '<pre>';
         print_r($_POST);
+
 
         if (count($_POST) == 0) {
             //Il n'y a qu'une echelle de prix à traiter ...
@@ -46,14 +50,21 @@ class verify_filter extends CI_Controller {
                     //Reinitialisation de l'array
                     $current_array = array();
                 }
+                
+                //On ajoute à l'array total, la nouvelle contrainte
                 array_push($current_array, $key);
             }
             //On ajoute le dernier array
             $checkbox[$current_key] = $current_array;
-
-
-            print_r($checkbox);
         }
+        
+        //Maintenant, il faut faire tout les calculs concernant les contraintes du filtres par rapport aux données reçus de la BDD
+        
+        
+        $allBDD = $this->activite_model->all();
+        
+        
+        print_r($allBDD);
 
         echo '</pre>';
     }
@@ -182,7 +193,6 @@ class verify_filter extends CI_Controller {
     function d_transport() {
         // On va chercher dans la BDD tous les transports qui partent du lieu choisi par l'utilisateur
         //...
-        
         //Puis on le renvoie vers la page avec toutes les annonces trouvées
         redirect('Static_pages/transport');
     }
@@ -190,13 +200,10 @@ class verify_filter extends CI_Controller {
     function a_transport() {
         // On va chercher dans la BDD tous les transports qui arrivent au lieu choisi par l'utilisateur
         //...
-
         //Puis on le renvoie vers la page avec toutes les annonces trouvées
         redirect('Static_pages/transport');
     }
 
-    
-    
     /*
      * 
      * Autres fonctions 'utiles' de manière générale

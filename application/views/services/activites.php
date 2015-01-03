@@ -2,16 +2,66 @@
 $this->load->library('form_validation');
 $this->load->model('activite_model', '', TRUE);
 $slider = base_url() . 'assets/slider/';
-$css = Myglobals_model::$css;
 
 function afficher_activite($data) {
-    
-}
+    // On traite un peu les données passée en paramètres (surtout au niveau de l'heure)
+    $debut = $data['horaire_deb'];
+    $fin = $data['horaire_fin'];
 
-function test_act($data) {
-    echo '<pre>';
-    print_r($data);
-    echo '</pre>';
+    //On change les ':' par 'h'
+    $debut = str_replace(':', "h", $debut);
+    $fin = str_replace(':', "h", $fin);
+
+    //Puis on enlève les secondes ...
+    $debut = substr($debut, 0, 5);
+    $fin = substr($fin, 0, 5);
+
+    //Changement du chemin pour la photo
+    if ($data['photo'] == NULL) {
+        $photo = Myglobals_model::$pictures.'services/none.png';
+    } else {
+        $photo = Myglobals_model::$pictures . 'services/' . $data['photo'];
+    }
+    //Pour finir, on affiche les informations principales de l'activite
+    echo '        <div class="row activite">
+            <a href="#">
+            <div class="col-md-3 text-center">
+                <img src=' . $photo . ' />
+            </div>
+            <div class="col-md-9">
+                <div class="col-md-4 text-center">
+                    <h3>
+                        ' . $data['t_typeact'] . '
+                    </h3>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h3>
+                        Niveau : ' . $data['niveau'] . '
+                    </h3>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h3>
+                        ' . $data['destination'] . '
+                    </h3>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h3>
+                        Début : ' . $debut . '
+                    </h3>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h3>
+                        Fin : ' . $fin . '
+                    </h3>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h3>
+                        Prix : ' . $data['prix'] . ' €
+                    </h3>
+                </div>
+            </div>
+            </a>
+        </div>';
 }
 ?>
 <div class="container">
@@ -82,38 +132,9 @@ function test_act($data) {
         </form>
     </div>
     <div id="resutl">
-        <div class="row">
-            <a href="#">
-                <div class="col-md-4">
-                    <h3>
-                        Snowboard
-                    </h3>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        Pour débutant
-                    </h3>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        Chamonix
-                    </h3>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        Début : 12h00
-                    </h3>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        Fin : 16h00
-                    </h3>
-                </div>
-            </a>
-        </div>
         <?php
         foreach ($data as $value) {
-            test_act($value);
+            afficher_activite($value);
         }
         ?>
 

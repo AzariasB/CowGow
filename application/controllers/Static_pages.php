@@ -43,7 +43,7 @@ class Static_pages extends CI_Controller {
 
     function navbar_collapse() {
         //Tous les fichiers requis pour le js et le css
-        $this->load->view('required/services_links');
+        $this->load->view('services/services_links');
 
         //La navbar en elle-même
         $this->load->view('required/navbar_collapse');

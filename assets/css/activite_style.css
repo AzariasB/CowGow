@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 janv. 2015, 18:20:27
+    Author     : Azarias
+*/
+
+.activite{
+    border: 1px solid #D9D9D9;
+    margin-top: 3px;
+    margin-bottom: 3px;
+
+    transition: background 0.5s;
+    -webkit-transition: background 0.5s;
+}
+
+.activite:hover{
+    background-color: #D9D9D9;
+}
+
+.activite a{
+    color: black;
+}
+
+.activite img{
+    width: 180px;
+    height: 130px;
+}

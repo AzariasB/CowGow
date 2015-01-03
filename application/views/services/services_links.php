@@ -16,7 +16,8 @@
 ?>
  
  
-<link href="<?php echo $css; ?>services.css" rel="stylesheet" />
+<link href="<?php echo $css; ?>accueil_service.css" rel="stylesheet" />
+<link href="<?php echo $css; ?>activite_style.css" rel="stylesheet" />
 <link href="<?php echo $css; ?>simple-sidebar.css" rel="stylesheet">
 <link href="<?php echo $css; ?>slider.css" rel="stylesheet" />
 
