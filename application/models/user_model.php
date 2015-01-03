@@ -90,5 +90,22 @@ class User_model extends CI_Model {
         $this->db->where('pseudo',$pseudo);
         $this->db->update('utilisateur',$tmpmdp);
     }
+    
+    function check_email($mail){
+      
+        $this->db->select('*');
+        $this->db->from('utilisateur');
+        $this->db->where('email',$mail);
+        
+        $this->db->limit(1);
+        $result = $this->db->get()->result();
+        
+        if($result == NULL){
+            return FALSE;
+        }else{
+            return TRUE;
+        }
+        
+    }
 
 }

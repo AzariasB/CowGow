@@ -127,7 +127,7 @@ class verifyregister extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
 
-            //Field validation failed.  User redirected to register page
+            //Erreur lore de l'enregistrement, utilisateur redirigé ver la page.
 
             $this->load->view('required/links');
             $this->load->view('register/register_view', $this->register_model->get_data());

@@ -116,33 +116,33 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
         <!-- Les trois 'boutons'-->
         <div class="row text-center block title-text">
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="button" aria-pressed="false" autocomplete="off">
+                <a type="button" class="btn btn-primary btn-block btn-lg" href="<?php echo site_url('Static_pages/activites'); ?>">
                     <h3>Sélectionnez <br/> vos <br/> Activités </h3>
-                </button>
+                </a>
             </div>
             <div class="col-md-1 vertical_align">
                 <h2><span class="glyphicon glyphicon-plus"></span> </h2>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block btn-lg " data-toggle="button" aria-pressed="false" autocomplete="off">
+                <a type="button" class="btn btn-primary btn-block btn-lg " href="<?php echo site_url('Static_pages/logement'); ?>">
                     <h3>Sélectionnez <br/> votre <br/> Logement </h3>
-                </button>
+                </a>
             </div>
             <div class="col-md-1 vertical_align">
                 <h2><i class="glyphicon glyphicon-plus"></i> </h2>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="button" aria-pressed="false" autocomplete="off">
+                <a type="button" class="btn btn-primary btn-block btn-lg" href="<?php echo site_url('Static_pages/transport'); ?>">
                     <h3>Sélectionnez <br/> votre <br/> Transport </h3>
-                </button>
+                </a>
             </div>
             <div class="col-md-1 vertical_align">
                 <h2><span class="icon-eq"></span> </h2>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="button" aria-pressed="false" autocomplete="off">
+                <a type="button" class="btn btn-primary btn-block btn-lg" href="<?php echo site_url('Static_pages/creer_pack'); ?>">
                     <h3>Créez <br/> votre <br/> Pack personalisé </h3>
-                </button>
+                </a>
             </div>
         </div>
 

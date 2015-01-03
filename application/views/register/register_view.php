@@ -430,9 +430,9 @@
         </label>
         <br>
         <div id="boutons">
-            <input type="submit" class="validation" name="accept"/>
-            <input type="reset" class="effacer" value="Effacer"/>
-            <a href="<?php echo site_url('Static_pages/accueil'); ?>">Retour au menu</a>
+            <input type="submit" class="validation btn btn-success" name="accept"/>
+            <input type="reset" class="effacer btn btn-danger" value="Effacer"/>
+            <a href="<?php echo site_url('Static_pages/accueil'); ?>" class="btn btn-default">Retour au menu</a>
         </div>
 
     </fieldset>
