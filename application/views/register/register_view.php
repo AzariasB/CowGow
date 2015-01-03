@@ -7,8 +7,8 @@
     <?php
     $this->load->library('form_validation');
 
-
-    if (!empty(validation_errors())) {
+    $error = trim(validation_errors());
+    if (!empty($error)) {
         $danger = 'alert-danger';
         $success = 'alert-success';
         $error_pseudo = form_error('pseudo');

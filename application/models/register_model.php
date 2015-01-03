@@ -36,7 +36,7 @@ class register_model extends CI_Model {
     }
 
     private function get_stations() {
-        $stations = $this->get_all('stations');
+        $stations = $this->get_all('Stations');
 
         $nom_station = array();
         foreach ($stations as $key => $value) {
@@ -44,23 +44,24 @@ class register_model extends CI_Model {
         }
 
         array_multisort(array_values($nom_station), SORT_REGULAR, array_keys($nom_station), SORT_REGULAR);
+        //Pour ordonner l'array par clé puis par valeur
         
         return $nom_station;
     }
 
     private function get_emplois() {
-        $emploi = $this->get_all('emplois');
+        $emploi = $this->get_all('Emplois');
 
         $nom_emploi = array();
         foreach ($emploi as $key => $value) {
-            $nom_emploi[$key] = $value->nomE; //une erreure ici
+            $nom_emploi[$key] = $value->nomE;
         }
         asort($nom_emploi);
         return $nom_emploi;
     }
 
     private function get_activites() {
-        $activites = $this->get_all('activites_fav');
+        $activites = $this->get_all('Activites_fav');
 
         $nom_acts = array();
         foreach ($activites as $key => $value) {
