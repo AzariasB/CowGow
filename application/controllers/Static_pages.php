@@ -62,9 +62,11 @@ class Static_pages extends CI_Controller {
      */
 
     function activites() {
+        $this->load->model('activite_model');
+        $data['data'] = $this->activite_model->all();
         $this->load->view('required/links');
         $this->navbar_collapse();
-        $this->load->view('services/activites');
+        $this->load->view('services/activites',$data);
     }
 
     function transport() {

@@ -1,11 +1,21 @@
 <?php
 $this->load->library('form_validation');
+$this->load->model('activite_model', '', TRUE);
 $slider = base_url() . 'assets/slider/';
 $css = Myglobals_model::$css;
 
+function afficher_activite($data) {
+    
+}
+
+function test_act($data) {
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+}
 ?>
 <div class="container">
-    <div class="row text-center">
+    <div class="row text-center" id="filtre">
         <h1>Activités</h1>
         <?php
         $attributes = array('class' => 'form-horizontal');
@@ -29,7 +39,7 @@ $css = Myglobals_model::$css;
                     <input type="checkbox" name="plus" id="plus" value="duree"/>
                     <label for="plus">Plus...</label>
                 </fieldset>
-                
+
                 <label for="creneau">Créneau horaire : </label>
                 <fieldset id="creneau" class="form-control">
                     <input type="checkbox" name="matin" id="matin" value="creneau"/>
@@ -70,6 +80,43 @@ $css = Myglobals_model::$css;
         </fieldset>
         <!-- Exemple parfait de slider !!! -->
         </form>
+    </div>
+    <div id="resutl">
+        <div class="row">
+            <a href="#">
+                <div class="col-md-4">
+                    <h3>
+                        Snowboard
+                    </h3>
+                </div>
+                <div class="col-md-4">
+                    <h3>
+                        Pour débutant
+                    </h3>
+                </div>
+                <div class="col-md-4">
+                    <h3>
+                        Chamonix
+                    </h3>
+                </div>
+                <div class="col-md-4">
+                    <h3>
+                        Début : 12h00
+                    </h3>
+                </div>
+                <div class="col-md-4">
+                    <h3>
+                        Fin : 16h00
+                    </h3>
+                </div>
+            </a>
+        </div>
+        <?php
+        foreach ($data as $value) {
+            test_act($value);
+        }
+        ?>
+
     </div>
 
 </div>
