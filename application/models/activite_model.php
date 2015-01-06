@@ -14,7 +14,7 @@ class Activite_model extends CI_Model {
         $this->db->from('Activite');
         $this->db->where('prix <', $prixMax);
         $this->db->where('prix >', $prixMin);
-        
+
         return $this->db->get()->result();
     }
 
@@ -23,7 +23,7 @@ class Activite_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Activite');
         $this->db->where('t_typeact', $type);
-        
+
         return $this->db->get()->result();
     }
 
@@ -34,7 +34,7 @@ class Activite_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Activite');
         $this->db->where('(horaire_fin - horaire_deb) <', $duree);
-        
+
         return $this->db->get()->result();
     }
 
@@ -43,7 +43,7 @@ class Activite_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Activite');
         $this->db->where('saison', $saison);
-        
+
         return $this->db->get()->result();
     }
 
@@ -53,7 +53,7 @@ class Activite_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Activite');
         $this->db->where('niveau <', $niveau);
-        
+
         return $this->db->get()->result();
     }
 
@@ -62,7 +62,7 @@ class Activite_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Activite');
         $this->db->where('lieu', $lieu);
-        
+
         return $this->db->get()->result();
     }
 
@@ -71,34 +71,68 @@ class Activite_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Activite');
         $this->db->where('note <', $note);
-        
+
         return $this->db->get()->result();
     }
-    
-    function all(){
+
+    function all() {
         $this->db->select('*');
-        $this->db->from('Activite');
-        
-        $id =  $this->db->get()->result();       
-        
-        $this->db->select("*");
-        $this->db->from("Service");
-        foreach ($id as $key => $value){
-            $this->db->or_where('IDService',$value->ida);
-            //Transformation en array pour plus de facilité de manipulation
-            $id[$key] = (array)$value;
+        $this->db->from('Service s, Activite a');
+        $this->db->where('a.ida = s.IDService');
+
+        $result = $this->db->get()->result();
+
+        foreach ($result as $key => $value) {
+            unset($value->IDService);
+            $result[$key] = (array) $value;
         }
-        
-        $result =  $this->db->get()->result();
-        
-        foreach ($id as $key => $value){
-            //Transformation de chaque ligne en array
-            $result[$key] = (array)$result[$key];
-            unset($result[$key]['IDService']);
-            $result[$key] = array_merge($id[$key],$result[$key]);
-        }
-        
+
         return $result;
+    }
+
+    //Fonction qui va chercher dans la BDD les activites qui correspondent aux filtre passé en paramètres
+    function with_filter(&$filter) {        
+        $this->db->select('*');
+        $this->db->from('Service s, Activite a');
+        $this->db->where('a.ida = s.IDService');
+        $this->db->where('s.prix >=', $filter['prix_min']);
+        $this->db->where('s.prix <=', $filter['prix_max']);
+        unset($filter['prix_min']);
+        unset($filter['prix_max']);
+        //S'il y a d'autres filtres que le prix ...
+        if (!empty($filter)) {
+            //On initialise notre grande variable pour faire les 'or' consécutif
+            foreach ($filter as $key => $value) {
+                // On crée notre requête composé de plusieurs 'or'
+                $where = '(' . $this->or_where($value, $key);
+                $where = substr($where, 0, strlen($where) - 4) . ')';
+                $this->db->where($where);
+            }
+            //On enlève le dernier 'or' parasite
+            //On ferme la parenthèse
+        }
+        
+   
+        $result = $this->db->get()->result();
+        return $result;
+    }
+
+    function or_where(&$array, $columnname) {
+        $or_list = "";
+        foreach ($array as $value) {
+            switch ($columnname) {
+                case 'duree':
+                    $or_list .= 'HOUR(horaire_fin) - HOUR(horaire_deb) ' . $value . "\n OR ";
+                    break;
+                case 'creneau':
+                    $or_list .= $value. " OR \n";
+                    break;
+                default :
+                    //Pour la cas 'saison' et 'niveau' on a la même requête.
+                    $or_list .= $columnname . " = '" . $value . "'\n OR ";
+            }
+        }
+        return $or_list;
     }
 
 }

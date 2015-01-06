@@ -2,6 +2,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <?php
+            /*
+             * Dans un modal du type 'liste déroulante',
+             * on part du principe que les arguements sont donnés à la vue
+             * (via 'Static_pages')
+             */
             $this->load->library('form_validation');
             echo validation_errors();
             echo form_open('verify_filter/l_activite');
@@ -14,7 +19,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
-                        <label for="lieu_act">Lieu du logement : </label>
+                        <label for="lieu_act">Lieu de l'activite : </label>
                         <select  class="select form-control" id="lieu_act">
                             <?php
                             foreach ($types as $value) {

@@ -57,16 +57,23 @@ class Static_pages extends CI_Controller {
         $this->load->view('modals/d_transport');
     }
 
+    
     /*
      * Toutes les fonctions qui permettent d'accéder à des services
      */
 
     function activites() {
         $this->load->model('activite_model');
-        $data['data'] = $this->activite_model->all();
+        $filter = $this->session->userdata('filter_activite');
+        if($filter == NULL || empty($filter) ){
+            $data['data'] = $this->activite_model->all();
+        }else{
+            $data['data'] = $filter;
+        }
         $this->load->view('required/links');
         $this->navbar_collapse();
         $this->load->view('services/activites',$data);
+        $this->load->view('required/footer');
     }
 
     function transport() {
