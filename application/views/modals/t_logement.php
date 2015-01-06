@@ -6,7 +6,9 @@
             echo validation_errors();
             echo form_open('verify_filter/t_logement');
 
-            $types = array('Chalet', 'Appartement', 'Hotel', 'Maison d\'hôtes');
+            if(!isset($logement)){
+                $logement = array();
+            }
             ?>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -18,7 +20,7 @@
                         <label for="type_l">Type de logement : </label>
                         <select  class="select form-control" id="type_l">
                             <?php
-                            foreach ($types as $value) {
+                            foreach ($logement as $value) {
                                 echo "<option class=\"form-control\">$value</option>".PHP_EOL;
                             }
                             ?>

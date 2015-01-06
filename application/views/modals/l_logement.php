@@ -5,7 +5,9 @@
             $this->load->library('form_validation');
             echo validation_errors();
             echo form_open('verify_filter/l_logement');
-            $types = array('je', 'n\{ai', 'pas', 'encore', 'fini','cette','partie','il','est','plus','que','temps','pour','moi','de','la','finir');
+            if(!isset($logement)){
+                $logement = array();
+            }
             ?>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -17,7 +19,7 @@
                         <label for="lieu_l">Lieu du logement : </label>
                         <select  class="select form-control" id="lieu_l">
                             <?php
-                            foreach ($types as $value) {
+                            foreach ($logement as $value) {
                                 echo "<option class=\"form-control\">$value</option>" . PHP_EOL;
                             }
                             ?>

@@ -5,7 +5,9 @@
             $this->load->library('form_validation');
             echo validation_errors();
             echo form_open('verify_filter/a_transport');
-            $types = array('je', 'n\{ai', 'pas', 'encore', 'fini', 'cette', 'partie', 'il', 'est', 'plus', 'que', 'temps', 'pour', 'moi', 'de', 'la', 'finir');
+            if(!isset($transport)){
+                $transport = array();
+            }
             ?>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -14,10 +16,10 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
-                        <label for="arr_transport"> Lieu d'arrivé : </label>
+                        <label for="arr_transport"> Villes/Stations d'arrivé possibles :  </label>
                         <select  class="select form-control" id="arr_transport">
                             <?php
-                            foreach ($types as $value) {
+                            foreach ($transport as $value) {
                                 echo "<option class=\"form-control\">$value</option>" . PHP_EOL;
                             }
                             ?>

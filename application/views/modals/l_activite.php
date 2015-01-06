@@ -10,7 +10,9 @@
             $this->load->library('form_validation');
             echo validation_errors();
             echo form_open('verify_filter/l_activite');
-            $types = array('je', 'n\{ai', 'pas', 'encore', 'fini', 'cette', 'partie', 'il', 'est', 'plus', 'que', 'temps', 'pour', 'moi', 'de', 'la', 'finir');
+            if(!isset($lieu)){
+                $lieu = array();
+            }
             ?>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -22,7 +24,7 @@
                         <label for="lieu_act">Lieu de l'activite : </label>
                         <select  class="select form-control" id="lieu_act">
                             <?php
-                            foreach ($types as $value) {
+                            foreach ($lieu as $value) {
                                 echo "<option class=\"form-control\">$value</option>" . PHP_EOL;
                             }
                             ?>
