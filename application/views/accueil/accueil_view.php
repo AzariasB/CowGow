@@ -98,7 +98,7 @@ $connected = isset($session['pseudo']) && $session['pseudo'] != NULL;
             </div>
             <div class="spacer-md col-md-8 col-md-offset-2">
                 <h3 class="text-center">
-                    Vous ne pouvez créer un pack que si vous êts connecté
+                    Vous ne pouvez créer un pack que si vous êtes connecté
                 </h3>
             </div>';
             }

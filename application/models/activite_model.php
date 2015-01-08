@@ -91,12 +91,16 @@ class Activite_model extends CI_Model {
     }
 
     //Fonction qui va chercher dans la BDD les activites qui correspondent aux filtre passé en paramètres
-    function with_filter(&$filter) {        
+    function with_filter($filter) {        
         $this->db->select('*');
         $this->db->from('Service s, Activite a');
         $this->db->where('a.ida = s.IDService');
         $this->db->where('s.prix >=', $filter['prix_min']);
         $this->db->where('s.prix <=', $filter['prix_max']);
+        if(isset($filter['Lieu'])){
+            $this->db->like('s.lieu',$filter['Lieu']);
+            unset($filter['Lieu']);
+        }
         unset($filter['prix_min']);
         unset($filter['prix_max']);
         //S'il y a d'autres filtres que le prix ...
@@ -106,14 +110,16 @@ class Activite_model extends CI_Model {
                 // On crée notre requête composé de plusieurs 'or'
                 $where = '(' . $this->or_where($value, $key);
                 $where = substr($where, 0, strlen($where) - 4) . ')';
-                $this->db->where($where);
+                if(!empty($where)){
+                    $this->db->where($where);
+                }
+                
             }
             //On enlève le dernier 'or' parasite
             //On ferme la parenthèse
         }
-        
-   
         $result = $this->db->get()->result();
+        
         return $result;
     }
 

@@ -119,7 +119,7 @@ class Static_pages extends CI_Controller {
         $this->load->view('services/transport');
     }
 
-    function logement() {
+    function logement() {       
         $this->load->view('required/links');
         $this->navbar_collapse();
         $this->load->view('services/logement');

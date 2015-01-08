@@ -67,8 +67,12 @@ extract($variables);
                     <label for="professionnel">Professionnel</label>
                 </fieldset>
 
+                <label for="lieu">Lieu : </label>
+                <fieldset>
+                    <input type="text" name="Lieu" id="lieu" placeholder="Grenoble" class="form-control" value="<?php echo $Lieu; ?>" />
+                </fieldset>
             </div>
-            <div class="col-md-6 text-right bottom">
+            <div class="col-md-6 text-left bottom">
                 <input type="submit" name="filter" value="Filtrer" class="btn btn-default btn-info" id="activite_filter" />
             </div>
         </fieldset>
@@ -119,6 +123,7 @@ extract($variables);
  */
 
 function if_filter(&$data, &$array) {
+    
     // Dans cet array, on met tout les noms de chaines qui ont un input dans le filtre
     $names = array('demi_j', 'journee', 'matin', 'apmidi', 'soir', 'Ete', 'Hiver', 'Debutant', 'Confirme', 'Professionel');
 
@@ -130,6 +135,10 @@ function if_filter(&$data, &$array) {
         $prix = $post['prix'];
         unset($post['prix']);
         $prix = $prix[0] . ',' . $prix[1];
+        
+        if(isset($post['Lieu'])){
+            $Lieu = $post['Lieu'];
+        }
 
         foreach ($names as $key => $value) {
             if (isset($post[$key])) {
@@ -145,8 +154,10 @@ function if_filter(&$data, &$array) {
             //Pour ne pas avoir de variable vide
         }
         $prix = '10,100';
+        $Lieu = "";
     }
     $names['prix'] = $prix;
+    $names['Lieu'] = $Lieu;
     $array = $names;
 }
 

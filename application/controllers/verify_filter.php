@@ -30,16 +30,27 @@ class verify_filter extends CI_Controller {
 
         $this->load->model('activite_model');
 
+        //On peut avoir un risque d'injection js/SQL par le nom de l'activite.
+        $this->form_validation->set_rules('Lieu', 'lieu de l\'activité', 'trim|xss_clean');
+
+        $this->form_validation->run();
+
+        $sqlSentences = array();
+
+        if ($_POST['Lieu'] != NULL && !empty($_POST['Lieu'])) {
+            $sqlSentences['Lieu'] = $_POST['Lieu'];
+        }
+
         $echelleprix = $this->separate_coma($_POST['prix_act']);
+
         unset($_POST['filter']);
         unset($_POST['prix_act']);
+        unset($_POST['Lieu']);
 
         if (count($_POST) == 0) {
             //Il n'y a qu'une echelle de prix à traiter ...
-            $checkbox = array();
         } else {
             //Il faut traiter toutes les checkbox 'on' puisque sur notre filtre, il n'y a que des checkbox
-            $checkbox = array();
             $current_array = array();
             $current_key = "";
             foreach ($_POST as $key => $value) {
@@ -49,7 +60,7 @@ class verify_filter extends CI_Controller {
                 //Ttes les values sont a 'on', ce qui nous interesse, c'est la clé !
                 // Pour chaque value différente, on crée un nouvel array
                 if ($current_key != $value) {
-                    $checkbox[$current_key] = $current_array;
+                    $sqlSentences[$current_key] = $current_array;
                     $current_key = $value;
                     unset($current_array);
                     //Reinitialisation de l'array
@@ -60,20 +71,20 @@ class verify_filter extends CI_Controller {
                 array_push($current_array, $key);
             }
             //On ajoute le dernier array
-            $checkbox[$current_key] = $current_array;
+            $sqlSentences[$current_key] = $current_array;
         }
         //On traite la durée : pour transformer un début-fin en une durée
         //On traite le créneau horaire : changer la chaine en un nombre (pour avoir un traitement sql plus facile)
-        if (isset($checkbox['creneau'])) {
-            $lenght = count($checkbox['creneau']);
-            foreach ($checkbox['creneau'] as $key => $value) {
+        if (isset($sqlSentences['creneau'])) {
+            $lenght = count($sqlSentences['creneau']);
+            foreach ($sqlSentences['creneau'] as $key => $value) {
                 switch ($value) {
                     //Pour chaque type de créneau, on le remplace par son heure maximale ou minimale
-                    case 'matin': $checkbox['creneau'][$key] = '( HOUR(horaire_fin) <= 12 AND HOUR(horaire_deb) >6 ) ';
+                    case 'matin': $sqlSentences['creneau'][$key] = '( HOUR(horaire_fin) <= 12 AND HOUR(horaire_deb) >6 ) ';
                         break;
-                    case 'apmidi': $checkbox['creneau'][$key] = '( HOUR(horaire_fin) <= 19 AND HOUR(horaire_deb) > 12 ) ';
+                    case 'apmidi': $sqlSentences['creneau'][$key] = '( HOUR(horaire_fin) <= 19 AND HOUR(horaire_deb) > 12 ) ';
                         break;
-                    case 'soir': $checkbox['creneau'][$key] = ' ( HOUR(horaire_fin) <= 24 AND HOUR(horaire_deb) > 19 ) ';
+                    case 'soir': $sqlSentences['creneau'][$key] = ' ( HOUR(horaire_fin) <= 24 AND HOUR(horaire_deb) > 19 ) ';
                         break;
                     default : break;
                 }
@@ -81,42 +92,42 @@ class verify_filter extends CI_Controller {
         }
 
         //On rajoute les accents pour la saison
-        if (isset($checkbox['saison'])) {
-            foreach ($checkbox['saison'] as $key => $value) {
-                if ($checkbox['saison'][$key] == 'Ete') {
-                    $checkbox['saison'][$key] = 'Eté';
+        if (isset($sqlSentences['saison'])) {
+            foreach ($sqlSentences['saison'] as $key => $value) {
+                if ($sqlSentences['saison'][$key] == 'Ete') {
+                    $sqlSentences['saison'][$key] = 'Eté';
                 }
             }
         }
 
         //On rajoute les accents pour le niveau
-        if (isset($checkbox['niveau'])) {
-            foreach ($checkbox['niveau'] as $key => $value) {
+        if (isset($sqlSentences['niveau'])) {
+            foreach ($sqlSentences['niveau'] as $key => $value) {
                 switch ($value) {
-                    case 'Debutant' : $checkbox['niveau'][$key] = 'Débutant';
+                    case 'Debutant' : $sqlSentences['niveau'][$key] = 'Débutant';
                         break;
-                    case 'Confirme' : $checkbox['niveau'][$key] = 'Confirmé';
+                    case 'Confirme' : $sqlSentences['niveau'][$key] = 'Confirmé';
                         break;
                 }
             }
         }
 
         //On enlève les '_' des duree :
-        if (isset($checkbox['duree'])) {
-            foreach ($checkbox['duree']as $key => $value) {
-                if($checkbox['duree'][$key] == 'demi_j'){
-                    $checkbox['duree'][$key] = ' < 5';
-                }else{
-                    $checkbox['duree'][$key] = ' > 5';
+        if (isset($sqlSentences['duree'])) {
+            foreach ($sqlSentences['duree']as $key => $value) {
+                if ($sqlSentences['duree'][$key] == 'demi_j') {
+                    $sqlSentences['duree'][$key] = ' < 5';
+                } else {
+                    $sqlSentences['duree'][$key] = ' > 5';
                 }
             }
         }
 
-        $checkbox['prix_min'] = $echelleprix[0];
-        $checkbox['prix_max'] = $echelleprix[1];
+        $sqlSentences['prix_min'] = $echelleprix[0];
+        $sqlSentences['prix_max'] = $echelleprix[1];
         //Maintenant, il faut faire tout les calculs concernant les contraintes du filtres par rapport aux données reçus de la BDD
         //On récupère ttes les infos de la bdd
-        $allBDD = $this->activite_model->with_filter($checkbox);
+        $allBDD = $this->activite_model->with_filter($sqlSentences);
 
         foreach ($allBDD as $key => $value) {
             $allBDD[$key] = (array) $value;
@@ -124,9 +135,16 @@ class verify_filter extends CI_Controller {
         }
         $allBDD['filter'] = TRUE;
         $_POST['prix'] = $echelleprix;
+        if (isset($sqlSentences['Lieu'])) {
+            $_POST['Lieu'] = $sqlSentences['Lieu'];;
+        }
+
+        /* Préparation de l'array pour rediriger vers la page avec les filtres :
+         *  - On utilise 'allBDD' pour envoyer les infos trouvé dans la BDD
+         *  - Et post correspond à toutes les informations données précédemment, pour pouvoir pré-remplir le filtre
+         */
         $post = array('post' => $_POST);
         $allBDD = array_merge($allBDD, $post);
-
 
         $this->session->unset_userdata('filter_activite');
 

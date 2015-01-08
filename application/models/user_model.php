@@ -16,7 +16,7 @@ class User_model extends CI_Model {
     function login($pseudo, $password) {
         //function qui recherche les infos correspondant à l'utilisateur ayant $pseudo et $passwd (brut)
         $this->db->select('*');
-        $this->db->from('utilisateur');
+        $this->db->from('Utilisateur');
         $this->db->where('pseudo', $pseudo);
         $this->db->where('mdp', MD5($password));
         $this->db->limit(1);
@@ -32,7 +32,7 @@ class User_model extends CI_Model {
 
     function value_exists($name, $value) {
         $this->db->select($name);
-        $this->db->from('utilisateur');
+        $this->db->from('Utilisateur');
         $this->db->where($name, $value);
         $this->db->limit(1);
 

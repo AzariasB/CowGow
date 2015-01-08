@@ -29,6 +29,7 @@ class modals_model extends CI_Controller {
      */
 
     function recup_infos(&$infos) {
+        $this->db->distinct();
         $this->db->select($infos['column_name']);
         if ($infos['column_id'] != NULL) {
             $this->db->from($infos['table_name'] . ',Service s');
@@ -36,6 +37,7 @@ class modals_model extends CI_Controller {
         } else {
             $this->db->from($infos['table_name']);
         }
+        $this->db->order_by($infos['column_name'],'asc');
 
 
         $result = $this->db->get()->result();
